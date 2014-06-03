@@ -161,8 +161,8 @@ $(document).ready(function() {
       success: function(repo_state) {
         $repo.find('.status').text(repo_state.ahead_by || '✔');
         $repo.addClass(repo_state.ahead_by ? 'stale' : 'good');
-        if (repo_state.ahead_by) {
-          $repo.find('.time').text(prettyDate(repo_state.base_commit.commit.author.date));
+        if (repo_state.commits) {
+          $repo.find('.time').text(prettyDate(repo_state.commits[0].commit.author.date));
         }
       },
       error: function(e) {
